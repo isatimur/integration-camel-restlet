@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+    <!-- CXF Service Beans -->
+    <bean id="helloWorldService" class="ru.blogspot.isatimur.services.controller.HelloWorldService"/>
+
+    <!-- Jackson Mapper-->
+    <bean id="jacksonMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+        <property name="serializationInclusion" value="NON_NULL"/>
+    </bean>
+
+    <jaxrs:server id="jaxrs" address="/rest">
+        <jaxrs:providers>
+            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider">
+                <property name="mapper" ref="jacksonMapper"></property>
+            </bean>
+        </jaxrs:providers>
+
+        <jaxrs:serviceBeans>
+            <ref bean="helloWorldService"/>
+        </jaxrs:serviceBeans>
+
+    </jaxrs:server>
+</beans>

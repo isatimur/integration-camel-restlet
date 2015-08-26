@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configure id="server" class="org.eclipse.jetty.server.Server">
+
+    <!--<New id="fileboxDS" class="org.eclipse.jetty.plus.jndi.Resource">-->
+    <!--<Arg></Arg>-->
+    <!--<Arg>jdbc/fileboxDS</Arg>-->
+    <!--<Arg>-->
+    <!--<New class="org.postgresql.ds.PGSimpleDataSource">-->
+    <!--<Set name="User">filebox</Set>-->
+    <!--<Set name="Password">filebox</Set>-->
+    <!--<Set name="DatabaseName">filebox_test_scripts</Set>-->
+    <!--<Set name="ServerName">192.168.15.146</Set>-->
+    <!--<Set name="PortNumber">5432</Set>-->
+    <!--</New>-->
+    <!--</Arg>-->
+    <!--</New>-->
+
+    <New id="servicesConfiguration" class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg></Arg>
+        <Arg>services/config</Arg>
+        <Arg type="java.lang.String">file:service-two.properties</Arg>
+        <Arg type="boolean">true</Arg>
+    </New>
+
+</Configure>
